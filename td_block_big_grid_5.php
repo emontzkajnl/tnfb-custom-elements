@@ -76,7 +76,7 @@ class Td_block_big_grid_5 extends Tnfb_Block_Class {
         $query = new WP_Query($args);
         $buffy = '';
         if ($query->have_posts()) {
-            $buffy .= '<div class="td_block_big_grid_5">';
+            $buffy .= '<div class="td_block_big_grid_5 block-layout-1">';
             while ($query->have_posts()) {
                 $query->the_post();
                 $buffy .= '<div class="td_block__item" style="height: 200px;">';

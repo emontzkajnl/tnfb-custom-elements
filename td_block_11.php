@@ -3,16 +3,16 @@ if (!class_exists('Tnfb_Block_Class')) {
     include_once( 'tnfb_block_class.php');
 }
 
-class Td_block_14 extends Tnfb_Block_Class {
+class Td_block_11 extends Tnfb_Block_Class {
 
-    protected $tag = 'td_block_14';
+    protected $tag = 'td_block_11';
 
 // post id, categories, tag slug, post number, custom title, title url, 
 
     public function map() {
         return array(
-            'name'        => esc_html__( 'td_block_14', 'text-domain' ),
-            'description' => esc_html__( 'td_block_14', 'text-domain' ),
+            'name'        => esc_html__( 'td_block_11', 'text-domain' ),
+            'description' => esc_html__( 'td_block_11', 'text-domain' ),
             'base'        => 'vc_infobox',
             'category' => __('TFBF', 'text-domain'),
             'icon' => 'tfbf-icon-1-1',
@@ -93,18 +93,19 @@ class Td_block_14 extends Tnfb_Block_Class {
         $query = new WP_Query($args);
         $buffy = '';
         if ($query->have_posts()) {
-            $buffy .= '<div class="td_block_14 block-layout-1">';
+            $buffy .= '<div class="td_block_11 block-layout-2">';
             while ($query->have_posts()) {
                 $query->the_post();
-                $buffy .= '<div class="td_block__item" style="height: 200px;">';
-                $buffy .= '<a href="'.get_the_permalink().'">';
-               $buffy .=  get_the_post_thumbnail( get_the_ID());
-               $buffy .= '<div class="td_block__meta">';
-               $buffy .= '<h4 class="td_block__title">'.get_the_title().'</h4>';
+                $buffy .= '<div class="td_block__item" >';
+                $buffy .= '<a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a>';
+               $buffy .= '<div class="td_block__text-area">';
+               $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
+               $buffy .= get_the_excerpt(  );
+               $buffy .= '<a class="read-more" href="'.get_the_permalink().'">Read More</a>';
                $buffy .= '</div>';
 
 
-                $buffy .= '</a></div>';
+                $buffy .= '</div>';
             }
             $buffy .= '</div>';
             wp_reset_postdata(  );
@@ -119,4 +120,4 @@ class Td_block_14 extends Tnfb_Block_Class {
 
 
 }
-new Td_block_14();
+new Td_block_11();
