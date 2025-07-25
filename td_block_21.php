@@ -96,9 +96,9 @@ class Td_block_21 extends Tnfb_Block_Class {
             $buffy .= '<div class="td_block_21 block-layout-2">';
             while ($query->have_posts()) {
                 $query->the_post();
-                $buffy .= '<div class="td_block__item" >';
-                $buffy .= '<a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a>';
-               $buffy .= '<div class="td_block__text-area">';
+                $buffy .= '<div class="td_block__item vc_row" >';
+                $buffy .= '<div class="vc_col-md-3"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div>';
+               $buffy .= '<div class="td_block__text-area vc_col-md-9">';
                $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
                $buffy .= get_the_excerpt(  );
                $buffy .= '<a class="read-more" href="'.get_the_permalink().'">Read More</a>';

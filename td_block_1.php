@@ -3,16 +3,16 @@ if (!class_exists('Tnfb_Block_Class')) {
     include_once( 'tnfb_block_class.php');
 }
 
-class Td_block_14 extends Tnfb_Block_Class {
+class Td_block_1 extends Tnfb_Block_Class {
 
-    protected $tag = 'td_block_14';
+    protected $tag = 'td_block_1';
 
 // post id, categories, tag slug, post number, custom title, title url, 
 
     public function map() {
         return array(
-            'name'        => esc_html__( 'td_block_14', 'text-domain' ),
-            'description' => esc_html__( 'td_block_14', 'text-domain' ),
+            'name'        => esc_html__( 'td_block_1', 'text-domain' ),
+            'description' => esc_html__( 'td_block_1', 'text-domain' ),
             'base'        => 'vc_infobox',
             'category' => __('TFBF', 'text-domain'),
             'icon' => 'tfbf-icon-1-1',
@@ -84,7 +84,7 @@ class Td_block_14 extends Tnfb_Block_Class {
             )
         );
         $args = array(
-            'posts_per_page'        => 3,
+            'posts_per_page'        => 5,
             'post_type'             => 'post'
         );
         if ($tfbf_category) {
@@ -93,18 +93,37 @@ class Td_block_14 extends Tnfb_Block_Class {
         $query = new WP_Query($args);
         $buffy = '';
         if ($query->have_posts()) {
-            $buffy .= '<div class="td_block_14 block-layout-1 vc_row">';
+            $count = 1;
+            $buffy .= '<div class="td_block_1 block-layout-3">';
+            $buffy .= $query->posts_per_page;
             while ($query->have_posts()) {
                 $query->the_post();
-                $buffy .= '<div class="td_block__item vc_col-md-4" >';
-                $buffy .= '<a href="'.get_the_permalink().'">';
-               $buffy .=  get_the_post_thumbnail( get_the_ID());
-               $buffy .= '<div class="td_block__meta">';
-               $buffy .= '<h4 class="td_block__title">'.get_the_title().'</h4>';
-               $buffy .= '</div>';
+                $layout_class = '';
+                if ($count == 1) {
+                    $buffy .= '<div class="vc_row">';
+                    $buffy .= '<div class="vc_col-md-6">';
+                    $buffy .= '<div class="td_block__item vc_row">';
+                    $buffy .= '<div class="vc_col-sm-12"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div>';
+                   $buffy .= '<div class="td_block__text-area vc_col-md-12">';
+                   $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
+                   $buffy .= get_the_excerpt(  );
+                   $buffy .= '<a class="read-more" href="'.get_the_permalink().'">Read More</a>';
+                   $buffy .= '</div>'; // text-area
+                   $buffy .= '</div>'; // item
+                   $buffy .= '</div>'; // col-md-6 
+                   $buffy .= '<div class="vc_col-md-6">';
+                   $count++;
+                } else {
+                    $buffy .= '<div class="td_block__item vc_row">';
+                    $buffy .= '<div class="vc_col-md-3"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div>';
+                   $buffy .= '<div class="td_block__text-area vc_col-md-9">';
+                   $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
+                   $buffy .= '</div>'; // text-area
+                    $buffy .= '</div>';
+                    $buffy .= $count == 5 ? '</div>' : '' ; // close col-md-6
+                    $count++;
+                }
 
-
-                $buffy .= '</a></div>';
             }
             $buffy .= '</div>';
             wp_reset_postdata(  );
@@ -119,4 +138,4 @@ class Td_block_14 extends Tnfb_Block_Class {
 
 
 }
-new Td_block_14();
+new Td_block_1();

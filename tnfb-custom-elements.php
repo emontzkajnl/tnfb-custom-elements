@@ -30,9 +30,11 @@ include( plugin_dir_path( __FILE__ ) . 'tnfb-latest-news.php');
 // include( plugin_dir_path( __FILE__ ) . 'tnfb_block_class.php');
 // include( plugin_dir_path( __FILE__ ) . 'tnfb-hello-world.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_big_grid_5.php');
+include( plugin_dir_path( __FILE__ ) . 'td_block_1.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_11.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_12.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_14.php');
+include( plugin_dir_path( __FILE__ ) . 'td_block_21.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_text_with_title.php');
 
 }

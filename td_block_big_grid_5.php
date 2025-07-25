@@ -76,10 +76,10 @@ class Td_block_big_grid_5 extends Tnfb_Block_Class {
         $query = new WP_Query($args);
         $buffy = '';
         if ($query->have_posts()) {
-            $buffy .= '<div class="td_block_big_grid_5 block-layout-1">';
+            $buffy .= '<div class="td_block_big_grid_5 block-layout-1 vc_row">';
             while ($query->have_posts()) {
                 $query->the_post();
-                $buffy .= '<div class="td_block__item" style="height: 200px;">';
+                $buffy .= '<div class="td_block__item vc_col-md-4" >';
                 $buffy .= '<a href="'.get_the_permalink().'">';
                $buffy .=  get_the_post_thumbnail( get_the_ID());
                $buffy .= '<div class="td_block__meta">';
