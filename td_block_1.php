@@ -125,7 +125,7 @@ class Td_block_1 extends Tnfb_Block_Class {
                 }
 
             }
-            $buffy .= '</div>';
+            $buffy .= '</div></div>';
             wp_reset_postdata(  );
             return $buffy;
             
