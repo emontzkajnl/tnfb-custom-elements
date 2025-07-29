@@ -102,7 +102,7 @@ class Td_block_1 extends Tnfb_Block_Class {
                 if ($count == 1) {
                     $buffy .= '<div class="vc_row">';
                     $buffy .= '<div class="vc_col-md-6">';
-                    $buffy .= '<div class="td_block__item vc_row">';
+                    $buffy .= '<div class="td_block__item featured vc_row">';
                     $buffy .= '<div class="vc_col-sm-12"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div>';
                    $buffy .= '<div class="td_block__text-area vc_col-md-12">';
                    $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
@@ -114,7 +114,7 @@ class Td_block_1 extends Tnfb_Block_Class {
                    $buffy .= '<div class="vc_col-md-6">';
                    $count++;
                 } else {
-                    $buffy .= '<div class="td_block__item vc_row">';
+                    $buffy .= '<div class="td_block__item small vc_row">';
                     $buffy .= '<div class="vc_col-md-3"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div>';
                    $buffy .= '<div class="td_block__text-area vc_col-md-9">';
                    $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
