@@ -100,22 +100,22 @@ class Td_block_1 extends Tnfb_Block_Class {
                 $query->the_post();
                 $layout_class = '';
                 if ($count == 1) {
-                    $buffy .= '<div class="vc_row">';
-                    $buffy .= '<div class="vc_col-md-6">';
-                    $buffy .= '<div class="td_block__item featured vc_row">';
-                    $buffy .= '<div class="vc_col-sm-12"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div>';
-                   $buffy .= '<div class="td_block__text-area vc_col-md-12">';
+                    $buffy .= '<div class="row">';
+                    $buffy .= '<div class="col-md-6">';
+                    $buffy .= '<div class="td_block__item featured row">';
+                    $buffy .= '<div class="col-sm-12"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div>';
+                   $buffy .= '<div class="td_block__text-area col-md-12">';
                    $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
                    $buffy .= get_the_excerpt(  );
-                   $buffy .= '<a class="read-more" href="'.get_the_permalink().'">Read More</a>';
+                   $buffy .= '<div style="text-align: center;"><a class="read-more" href="'.get_the_permalink().'">Read More</a></div>';
                    $buffy .= '</div>'; // text-area
                    $buffy .= '</div>'; // item
                    $buffy .= '</div>'; // col-md-6 
-                   $buffy .= '<div class="vc_col-md-6">';
+                   $buffy .= '<div class="col-md-6">';
                    $count++;
                 } else {
-                    $buffy .= '<div class="td_block__item small vc_row">';
-                    $buffy .= '<div class="vc_col-md-3"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div>';
+                    $buffy .= '<div class="td_block__item small row">';
+                    $buffy .= '<div class="col-md-3"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div>';
                    $buffy .= '<div class="td_block__text-area vc_col-md-9">';
                    $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
                    $buffy .= '</div>'; // text-area

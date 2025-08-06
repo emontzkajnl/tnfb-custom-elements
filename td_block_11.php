@@ -93,14 +93,14 @@ class Td_block_11 extends Tnfb_Block_Class {
         $query = new WP_Query($args);
         $buffy = '';
         if ($query->have_posts()) {
-            $buffy .= '<div class="td_block_11 block-layout-2">';
+            $buffy .= '<div class="td_block_11 block-layout-2 ">';
             while ($query->have_posts()) {
                 $query->the_post();
-                $buffy .= '<div class="td_block__item" >';
-                $buffy .= '<a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a>';
-               $buffy .= '<div class="td_block__text-area">';
+                $buffy .= '<div class="td_block__item row" >';
+                $buffy .= '<div class="col-md-4"><div class="object-fit-image"><a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'gform-image-choice-sm').'</a></div></div>';
+               $buffy .= '<div class="td_block__text-area col-md-8">';
                $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
-               $buffy .= get_the_excerpt(  );
+               $buffy .= '<p>'.get_the_excerpt(  ).'</p>';
                $buffy .= '<a class="read-more" href="'.get_the_permalink().'">Read More</a>';
                $buffy .= '</div>';
 
