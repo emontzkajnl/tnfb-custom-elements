@@ -206,7 +206,14 @@ if ( ! class_exists( 'tnfblatestnews' ) ) {
 		);
 		$news_query = new WP_Query($args);
 		$counter = 1;
-		$html = '';
+		$html = '<div class="row latest-news-buttons"><ul>';
+		$html .= '<ul>';
+		$html .= '<li><a href="#" data-category="news">All</a></li>';
+		$html .= '<li><a href="#" data-category="ag-news">Ag News</a></li>';
+		$html .= '<li><a href="#" data-category="ag-angle">Ag Angle</a></li>';
+		$html .= '<li><a href="#" data-category="press-releases">Press Releases</a></li>';
+		$html .= '<li><a href="#" data-category="statements">Statements</a></li>';
+		$html .= '</ul></div>';
 		if ($news_query->have_posts()):
 			$html .= '<div class="vc_row latest-news">';
 		while ($news_query->have_posts()): $news_query->the_post();
@@ -215,10 +222,12 @@ if ( ! class_exists( 'tnfblatestnews' ) ) {
 			if ($counter == 1 ) {
 				$html .= '<div class="vc_column-inner latest-news__featured">';
 				$html .= get_the_post_thumbnail();
+				$html .= '<p class="latest-news__date">'.get_the_date('M j, Y').'</p>';
 				$html .= '<h3>'.get_the_title().'</h3>';
 				$html .= '</div>';
 			} else {
 				$html .= '<div class="vc_column-inner">';
+				$html .= '<p class="latest-news__date">'.get_the_date('M j, Y').'</p>';
 				$html .= '<h3 class="latest-news__title"><a class="unstyle-link" href="'.get_the_permalink( ).'">'.get_the_title().'</a></h3>';
 				$html .= '</div>';
 			}
@@ -234,6 +243,47 @@ if ( ! class_exists( 'tnfblatestnews' ) ) {
 }
 
 new tnfblatestnews;
+
+function ajax_latest_news_homepage_callback() {
+	$args = array(
+		'post_type'			=> 'post',
+		'posts_per_page'	=> 9,
+		'category_name'		=> $_POST['category'],
+		'post_status'		=> 'publish'
+	);
+
+	$news_query = new WP_Query($args);
+	$counter = 1;
+	$html = '';
+
+	if ($news_query->have_posts()){
+		while ($news_query->have_posts()){ $news_query->the_post();
+			
+			$html .= in_array($counter, [1,2,6]) ? '<div class="wpb_column vc_column_container vc_col-md-4">' : '';  // columns
+			if ($counter == 1 ) {
+				$html .= '<div class="vc_column-inner latest-news__featured">';
+				$html .= get_the_post_thumbnail();
+				$html .= '<h3>'.get_the_title().'</h3>';
+				$html .= '</div>';
+			} else {
+				$html .= '<div class="vc_column-inner">';
+				$html .= '<h3 class="latest-news__title"><a class="unstyle-link" href="'.get_the_permalink( ).'">'.get_the_title().'</a></h3>';
+				$html .= '</div>';
+			}
+			
+			$html .= in_array($counter, [1,5,9]) ? '</div>' : '';  // close columns
+			$counter++;
+		}
+	} else {
+		$html = '<p>no posts to display</p>';
+	}
+	return $html;
+	wp_die();
+
+}
+
+add_action( 'wp_ajax_my_ajax_latest_news_homepage', 'ajax_latest_news_homepage_callback' );
+add_action( 'wp_ajax_nopriv_my_ajax_latest_news_homepage', 'ajax_latest_news_homepage_callback' );
 
 ////////////////////////////////
 // TFBF PUBLICATIONS BLOCK
@@ -336,14 +386,14 @@ if ( ! class_exists( 'tnfbpublications' ) ) {
 		$ID = $pub_query[0]->ID;
 		$html = '';
 		
-			$html .= '<div class="tnfb-publication">';
-			$html .= '<div class="tnfb-publication__text-container">';
+			$html .= '<div class="tnfb-publication row col-md-12">';
+			$html .= '<div class="tnfb-publication__text-container col-md-6">';
 			$html .= '<h3 class="tnfb-publication__title">'.$tfbf_title.'</h3>';
 			$html .= '<p class="tnfb-publication__description">'.$tfbf_description.'</p>';
-			$html .= '<p class="tnfb-publication__read-more"><a href="'.get_the_permalink($ID).'">Read the latest issue</a></p>';
+			$html .= '<p class="tnfb-publication__read-more"><a href="'.get_the_permalink($ID).'">Read the latest issue ></a></p>';
 			$html .= '</div>'; // text container
-			$html .= '<div class="tnfb-publication__img-container">';
-			$html .= '<a href="'.get_the_permalink($ID).'">'.get_the_post_thumbnail( $ID, 'thumbnail').'</a>';
+			$html .= '<div class="tnfb-publication__img-container col-md-6">';
+			$html .= '<a href="'.get_the_permalink($ID).'">'.get_the_post_thumbnail( $ID, 'medium').'</a>';
 			$html .= '</div>'; // img container
 
 		$html .= '</div>';

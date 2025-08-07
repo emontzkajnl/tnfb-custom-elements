@@ -47,3 +47,19 @@ function wpc_community_directory_scripts() {
     wp_enqueue_style( 'wpc_community_directory_stylesheet',  plugin_dir_url( __FILE__ ) . 'styles/tnfb-custom-styles.css' );
 }
 add_action( 'wp_enqueue_scripts', 'wpc_community_directory_scripts' );
+
+function tnfb_custom_element_scripts() {
+    wp_enqueue_script( 'tnfb-custom-elements', plugin_dir_url( __FILE__ )  . '/js/custom-elements.js', array('jquery') , null, true);
+    wp_localize_script( 'tnfb-custom-elements', 'tnfb_custom_elements_obj', array(
+        'ajax_url' => admin_url( 'admin-ajax.php' ),
+        'nonce' => wp_create_nonce( 'tnfb_custom_elements_obj' ),
+    ) );
+  }
+  
+  add_action( 'wp_enqueue_scripts', 'tnfb_custom_element_scripts' );
+
+//   wp_localize_script( 'visualcomposerstarter-script', 'visualcomposerstarter', array(
+//     'ajax_url' => admin_url( 'admin-ajax.php' ),
+//     'nonce' => wp_create_nonce( 'visualcomposerstarter' ),
+//     'woo_coupon_form' => get_theme_mod( 'woocommerce_coupon_from', false ),
+// ) );

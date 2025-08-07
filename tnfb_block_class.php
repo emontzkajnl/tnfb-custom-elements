@@ -27,6 +27,7 @@ abstract class Tnfb_Block_Class {
         if ( function_exists( 'vc_lean_map' ) ) {
             vc_lean_map( $this->tag, array( $this, 'map' ) );
         }
+
 }
 
     /**
