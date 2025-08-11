@@ -27,6 +27,7 @@ function wpc_vc_before_init_actions() {
 
 include( plugin_dir_path( __FILE__ ) . 'tnfb-custom-elements-element.php');
 include( plugin_dir_path( __FILE__ ) . 'tnfb-latest-news.php');
+include( plugin_dir_path( __FILE__ ) . 'program_links.php');
 // include( plugin_dir_path( __FILE__ ) . 'tnfb_block_class.php');
 // include( plugin_dir_path( __FILE__ ) . 'tnfb-hello-world.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_big_grid_5.php');
@@ -49,10 +50,10 @@ function wpc_community_directory_scripts() {
 add_action( 'wp_enqueue_scripts', 'wpc_community_directory_scripts' );
 
 function tnfb_custom_element_scripts() {
-    wp_enqueue_script( 'tnfb-custom-elements', plugin_dir_url( __FILE__ )  . '/js/custom-elements.js', array('jquery') , null, true);
+    wp_enqueue_script( 'tnfb-custom-elements', plugin_dir_url( __FILE__ )  . 'js/custom-elements.js', array('jquery') , null, true);
     wp_localize_script( 'tnfb-custom-elements', 'tnfb_custom_elements_obj', array(
         'ajax_url' => admin_url( 'admin-ajax.php' ),
-        'nonce' => wp_create_nonce( 'tnfb_custom_elements_obj' ),
+        // 'nonce' => wp_create_nonce( 'tnfb_custom_elements_obj' ),
     ) );
   }
   

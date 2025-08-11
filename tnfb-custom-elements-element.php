@@ -208,7 +208,7 @@ if ( ! class_exists( 'tnfblatestnews' ) ) {
 		$counter = 1;
 		$html = '<div class="row latest-news-buttons"><ul>';
 		$html .= '<ul>';
-		$html .= '<li><a href="#" data-category="news">All</a></li>';
+		$html .= '<li><a class="active-news-button" href="#" data-category="news">All</a></li>';
 		$html .= '<li><a href="#" data-category="ag-news">Ag News</a></li>';
 		$html .= '<li><a href="#" data-category="ag-angle">Ag Angle</a></li>';
 		$html .= '<li><a href="#" data-category="press-releases">Press Releases</a></li>';
@@ -223,7 +223,7 @@ if ( ! class_exists( 'tnfblatestnews' ) ) {
 				$html .= '<div class="vc_column-inner latest-news__featured">';
 				$html .= get_the_post_thumbnail();
 				$html .= '<p class="latest-news__date">'.get_the_date('M j, Y').'</p>';
-				$html .= '<h3>'.get_the_title().'</h3>';
+				$html .= '<h3 class="latest-news__title">'.get_the_title().'</h3>';
 				$html .= '</div>';
 			} else {
 				$html .= '<div class="vc_column-inner">';
@@ -248,7 +248,7 @@ function ajax_latest_news_homepage_callback() {
 	$args = array(
 		'post_type'			=> 'post',
 		'posts_per_page'	=> 9,
-		'category_name'		=> $_POST['category'],
+		'category_name'		=> $_POST['cat'],
 		'post_status'		=> 'publish'
 	);
 
@@ -258,15 +258,16 @@ function ajax_latest_news_homepage_callback() {
 
 	if ($news_query->have_posts()){
 		while ($news_query->have_posts()){ $news_query->the_post();
-			
 			$html .= in_array($counter, [1,2,6]) ? '<div class="wpb_column vc_column_container vc_col-md-4">' : '';  // columns
 			if ($counter == 1 ) {
 				$html .= '<div class="vc_column-inner latest-news__featured">';
 				$html .= get_the_post_thumbnail();
-				$html .= '<h3>'.get_the_title().'</h3>';
+				$html .= '<p class="latest-news__date">'.get_the_date('M j, Y').'</p>';
+				$html .= '<h3 class="latest-news__title">'.get_the_title().'</h3>';
 				$html .= '</div>';
 			} else {
 				$html .= '<div class="vc_column-inner">';
+				$html .= '<p class="latest-news__date">'.get_the_date('M j, Y').'</p>';
 				$html .= '<h3 class="latest-news__title"><a class="unstyle-link" href="'.get_the_permalink( ).'">'.get_the_title().'</a></h3>';
 				$html .= '</div>';
 			}
@@ -276,14 +277,15 @@ function ajax_latest_news_homepage_callback() {
 		}
 	} else {
 		$html = '<p>no posts to display</p>';
+		// echo 'no posts';
 	}
-	return $html;
+	echo $html;
 	wp_die();
 
 }
 
-add_action( 'wp_ajax_my_ajax_latest_news_homepage', 'ajax_latest_news_homepage_callback' );
-add_action( 'wp_ajax_nopriv_my_ajax_latest_news_homepage', 'ajax_latest_news_homepage_callback' );
+add_action( 'wp_ajax_latest_news_homepage', 'ajax_latest_news_homepage_callback' );
+add_action( 'wp_ajax_nopriv_latest_news_homepage', 'ajax_latest_news_homepage_callback' );
 
 ////////////////////////////////
 // TFBF PUBLICATIONS BLOCK
