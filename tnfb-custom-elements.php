@@ -39,6 +39,7 @@ include( plugin_dir_path( __FILE__ ) . 'td_block_14.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_21.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_text_with_title.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_image_box.php');
+include( plugin_dir_path( __FILE__ ) . 'news-ticker.php');
 
 }
 
