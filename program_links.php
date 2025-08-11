@@ -93,8 +93,9 @@ class Program_links extends Tnfb_Block_Class {
        $buffy .= '</style>';
        $buffy .= '<a href="'.$link.'">';
         $buffy .= '<div class="'.$classname.' program-link">';
-            $buffy .= '<h3 class="program-link__title">'.$title.'</h3>';
-            $buffy .= '</div></a>';
+        $buffy .= '<h3 class="program-link__title">'.$title.'</h3>';
+        $buffy .= '</div></a>';
+        return $buffy;
         }
 
 
