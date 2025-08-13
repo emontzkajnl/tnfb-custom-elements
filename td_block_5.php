@@ -78,12 +78,14 @@ class Td_block_5 extends Tnfb_Block_Class {
         $query = new WP_Query($args);
         $buffy = '';
         if ($query->have_posts()) {
-            $buffy .= '<div class="td_block_5 vc_row">';
+            $buffy .= '<div class="td_block_5 row">';
             while ($query->have_posts()) {
                 $query->the_post();
-                $buffy .= '<div class="td_block__item" >';
                 $buffy .= '<div class="col-md-4">';
+                $buffy .= '<div class="td_block__item" >';
+                $buffy .= '<div class="object-fit-image" >';
                 $buffy .= '<a href="'.get_the_permalink().'">'.get_the_post_thumbnail( get_the_ID(), 'medium_large').'</a>';
+                $buffy .= '</div>';
                $buffy .= '<div class="td_block__text-area">';
                $buffy .= '<h4 class="td_block__title"><a href="'.get_the_permalink().'">'.get_the_title().'</a></h4>';
                $buffy .= '</div></div>';
