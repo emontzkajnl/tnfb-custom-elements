@@ -221,9 +221,9 @@ if ( ! class_exists( 'tnfblatestnews' ) ) {
 			$html .= in_array($counter, [1,2,6]) ? '<div class="wpb_column vc_column_container vc_col-md-4">' : '';  // columns
 			if ($counter == 1 ) {
 				$html .= '<div class="vc_column-inner latest-news__featured">';
-				$html .= get_the_post_thumbnail();
+				$html .= '<a class="unstyle-link" href="'.get_the_permalink( ).'">'.get_the_post_thumbnail().'</a>';
 				$html .= '<p class="latest-news__date">'.get_the_date('M j, Y').'</p>';
-				$html .= '<h3 class="latest-news__title">'.get_the_title().'</h3>';
+				$html .= '<h3 class="latest-news__title"><a class="unstyle-link" href="'.get_the_permalink( ).'">'.get_the_title().'</a></h3>';
 				$html .= '</div>';
 			} else {
 				$html .= '<div class="vc_column-inner">';
