@@ -212,7 +212,7 @@ if ( ! class_exists( 'tnfblatestnews' ) ) {
 		$html .= '<li><a href="#" data-category="ag-news">Ag News</a></li>';
 		$html .= '<li><a href="#" data-category="ag-angle">Ag Angle</a></li>';
 		$html .= '<li><a href="#" data-category="press-releases">Press Releases</a></li>';
-		$html .= '<li><a href="#" data-category="statements">Statements</a></li>';
+		// $html .= '<li><a href="#" data-category="statements">Statements</a></li>';
 		$html .= '</ul></div>';
 		if ($news_query->have_posts()):
 			$html .= '<div class="vc_row latest-news">';
