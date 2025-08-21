@@ -32,5 +32,27 @@
         });
     // populate container 
     });
-   
+
+    function newsTicker() {
+        const intervalID = setInterval(rotateNewsTicker, 5000);
+        const items = $('.news-ticker__post');
+        const numItems = items.length;
+        function rotateNewsTicker() {
+            let current = $('.news-ticker__post.active');
+            let position = current.data('count');
+            console.log('position ',position);
+            let next = position == numItems ? '1' : position + 1;
+            items.each(function(index) {
+                const that = $(this);
+                if (that.data('count') == next) {
+                    that.addClass('active'); 
+                } else {
+                    that.removeClass('active'); 
+                }
+            });
+        }
+    }
+    newsTicker();
+
+
 })(jQuery);

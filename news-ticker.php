@@ -77,15 +77,18 @@ class News_Ticker extends Tnfb_Block_Class {
         $query = new WP_Query($args);
         $buffy = '';
         if ($query->have_posts()) {
+            $count = 1;
             $buffy .= '<div class="news-ticker ">';
-            $buffy .= '<div class="news-ticker__title">Trending Now</div>';
+            $buffy .= '<h3 class="news-ticker__title">Trending Now</h3>';
             $buffy .= '<div class="news-ticker__display-area">';
             while ($query->have_posts()) {
+                $active = $count == 1 ? 'active' : '';
                 $query->the_post();
-                $buffy .= '<div class="news-ticker__post " >';
-                $buffy .= '<a href="'.get_the_permalink().'">';
+                $buffy .= '<div class="news-ticker__post '.$active.'" data-count="'.$count.'">';
+                $buffy .= '<a class="unstyle-link" href="'.get_the_permalink().'">';
                $buffy .= '<span>'.get_the_title().'</span>';
                 $buffy .= '</a></div>';
+                $count++;
             }
             $buffy .= '</div></div>';
         }
