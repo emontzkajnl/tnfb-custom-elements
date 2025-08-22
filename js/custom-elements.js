@@ -52,7 +52,10 @@
             });
         }
     }
-    newsTicker();
+    if (document.querySelector('.news-ticker')) {
+        newsTicker();
+    }
+    
 
 
 })(jQuery);
