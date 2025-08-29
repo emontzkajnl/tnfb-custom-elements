@@ -376,7 +376,7 @@ if ( ! class_exists( 'tnfbpublications' ) ) {
 		// $category_name = $tfbf_category == 'magazine' ? 'thf-magazine' : 'tfb-newsletter'; 
         // Fill $html var with data
 		$args = array(
-			'post_type'			=> 'post',
+			'post_type'			=> array('post', 'page'),
 			'number_posts'		=> 1,
 			'category_name'		=> $tfbf_category,
 			'post_status'		=> 'publish'

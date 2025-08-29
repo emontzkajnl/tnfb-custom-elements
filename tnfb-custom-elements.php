@@ -28,6 +28,7 @@ function wpc_vc_before_init_actions() {
 include( plugin_dir_path( __FILE__ ) . 'tnfb-custom-elements-element.php');
 include( plugin_dir_path( __FILE__ ) . 'tnfb-latest-news.php');
 include( plugin_dir_path( __FILE__ ) . 'program_links.php');
+include( plugin_dir_path( __FILE__ ) . 'tnfb-calemeo.php');
 // include( plugin_dir_path( __FILE__ ) . 'tnfb_block_class.php');
 // include( plugin_dir_path( __FILE__ ) . 'tnfb-hello-world.php');
 include( plugin_dir_path( __FILE__ ) . 'td_block_big_grid_5.php');
