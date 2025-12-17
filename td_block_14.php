@@ -87,8 +87,8 @@ class Td_block_14 extends Tnfb_Block_Class {
             'posts_per_page'        => 3,
             'post_type'             => 'post'
         );
-        if ($tfbf_category) {
-            $args['cat'] = $tfbf_category;
+        if ($category_id) {
+            $args['cat'] = $category_id;
         }
         $query = new WP_Query($args);
         $buffy = '';

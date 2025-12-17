@@ -86,6 +86,7 @@ class Td_Block_Text_With_Title extends Tnfb_Block_Class {
         $buffy .= $title_url ? '<a href="'.$title_url.'" target="_blank">'.$custom_title.'</a>' :  $custom_title;
         $buffy .= '</span></h4>';
         $buffy .= '<div class="text-title-content">'.$content.'</div>';
+        $buffy .= '</div>';
         return $buffy;
             
         }
