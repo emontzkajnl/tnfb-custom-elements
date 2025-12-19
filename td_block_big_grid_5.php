@@ -80,7 +80,7 @@ class Td_block_big_grid_5 extends Tnfb_Block_Class {
             while ($query->have_posts()) {
                 $query->the_post();
                 $buffy .= '<div class="td_block__item vc_col-md-4" >';
-                $buffy .= '<a href="'.get_the_permalink().'">';
+                $buffy .= '<a class="object-fit-image" href="'.get_the_permalink().'">';
                $buffy .=  get_the_post_thumbnail( get_the_ID());
                $buffy .= '<div class="td_block__meta">';
                $buffy .= '<h4 class="td_block__title">'.get_the_title().'</h4>';
